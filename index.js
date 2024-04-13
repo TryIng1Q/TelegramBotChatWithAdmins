@@ -96,7 +96,6 @@ const botMethods = {
 			writeDb([ChatAdmins], 'dataBase/adminsInfo.json');
 
 			if (ChatAdmins[oldAdminID].adminBadReviews.length >= 4) {
-				// bot.telegram.sendMessage(319439576, `Ответы админа ${ChatAdmins[ChatAdmins.currentAdmin].admin_name} не помогли 4 раза`);
 				bot.telegram.sendMessage(934870703, `Ответы админа ${ChatAdmins[oldAdminID].admin_name} не помогли 4 раза`);
 			};
 
@@ -211,7 +210,7 @@ bot.command('start', async(ctx) => {
 	});
 });
 bot.on('message', async(ctx) => {
-	if ((ctx.message.chat.id === 934870703 || ctx.message.chat.id === 870643619) && ctx.message.reply_to_message) {
+	if ((ctx.message.chat.id === 934870703 || ctx.message.chat.id === 870643619 || ctx.message.chat.id === 319439576) && ctx.message.reply_to_message) {
 		botMethods.sendAnswer(ctx);
 		setTimeout(() => {
 			botMethods.sendRatingQuestion(ctx);
