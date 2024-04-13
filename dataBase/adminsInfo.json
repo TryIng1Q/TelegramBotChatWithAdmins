@@ -1,1 +1,7 @@
-[{"1":{"admin_name":"TryIng","chat_id":934870703,"adminBadReviews":[{}]},"2":{"admin_name":"George","chat_id":319439576,"adminBadReviews":[{}]},"currentAdmin":2,"adminCount":2}]
+[{
+	"1":{"admin_name":"TryIng","chat_id":934870703,"adminBadReviews":[{}]},
+	"2":{"admin_name":"George","chat_id":319439576,"adminBadReviews":[{}]},
+	"3":{"admin_name":"Жахангер","chat_id":870643619,"adminBadReviews":[{}]},
+	"currentAdmin":1,
+	"adminCount":3
+}]
