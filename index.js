@@ -17,7 +17,7 @@ console.log(currentAdminInfo);
 
 
 // Bot
-const bot = new Telegraf('7197566941:AAFEi_OATOQ-JfjMkwIGdX1PmWGybbaTmzM');
+const bot = new Telegraf('7024026122:AAEspx76DMQ4_LkLPafiTQGrCpCN6JFnFbg');
 const botMethods = {
 	async sendAnswer(ctx) {
 		const chatReplyInfo = (ctx.message.reply_to_message.text).split('\n');
