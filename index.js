@@ -17,7 +17,7 @@ console.log(currentAdminInfo);
 
 
 // Bot
-const bot = new Telegraf('7024026122:AAEspx76DMQ4_LkLPafiTQGrCpCN6JFnFbg');
+const bot = new Telegraf('7197566941:AAFEi_OATOQ-JfjMkwIGdX1PmWGybbaTmzM');
 const botMethods = {
 	async sendAnswer(ctx) {
 		const chatReplyInfo = (ctx.message.reply_to_message.text).split('\n');
@@ -38,12 +38,12 @@ const botMethods = {
 		const chatID = chatReplyInfo[chatReplyInfo.length - 1].split(' ')[1];
 
 		let btnRandomID = this.makeID();
-		let userEstimation = await ctx.reply(`Считаете ли вы этот ответ полезным ?`, { 
+		let userEstimation = await ctx.reply(`Сіз бұл жауапты пайдалы деп санайсыз ба ?`, { 
 			reply_markup: {
 				inline_keyboard: [
 					[
-						{ text: "Помог 👍", callback_data: `btn-success-${btnRandomID}` },
-						{ text: "Не помог 👎", callback_data: `btn-fail-${btnRandomID}` },
+						{ text: "Көмектесті 👍", callback_data: `btn-success-${btnRandomID}` },
+						{ text: "Көмектеспеді 👎", callback_data: `btn-fail-${btnRandomID}` },
 					],
 				]
 			},
@@ -55,11 +55,11 @@ const botMethods = {
 				console.log(`Ошибка - ${error}`);
 			});
 
-			const newQuestionBtn = await ctx.reply(`Спасибо за оценку. Мы рады что смогли помочь вам`, {
+			const newQuestionBtn = await ctx.reply(`Бағалағаныңыз үшін рахмет. Біз сізге көмектесе алғанымызға қуаныштымыз`, {
 				reply_markup: {
 					inline_keyboard: [
 						[
-							{ text: "Задать еще один вопрос ↩", callback_data: `btn-question-${btnRandomID}` },
+							{ text: "Тағы бір сұрақ қойыңыз ↩", callback_data: `btn-question-${btnRandomID}` },
 						],
 					]
 				},
@@ -100,11 +100,11 @@ const botMethods = {
 			};
 
 
-			const newQuestionBtn = await ctx.reply(`Нам жаль что ответ вам не помог, мы постораемся ответить на ваш следующий вопрос`, {
+			const newQuestionBtn = await ctx.reply(`Жауап сізге көмектеспегені үшін кешірім сұраймыз, келесі сұрағыңызға жауап беруге тырысамыз`, {
 				reply_markup: {
 					inline_keyboard: [
 						[
-							{ text: "Задать еще один вопрос ↩", callback_data: `btn-question-${btnRandomID}` },
+							{ text: "Тағы бір сұрақ қойыңыз ↩", callback_data: `btn-question-${btnRandomID}` },
 						],
 					]
 				},
@@ -149,13 +149,13 @@ const SceneCreate = {
 	getQuestionScene() {
 		// Создание сцены
 		const questionScene = new BaseScene('GET_QUESTION');
-		questionScene.enter((ctx) => ctx.reply('Ваше следующие сообщение будет считаться за вопрос.'));
+		questionScene.enter((ctx) => ctx.reply('Сіздің келесі хабарламаңыз сұраққа есептеледі.'));
 
 		questionScene.on('text', async (ctx) => {
 			oldAdminInfo = currentAdminInfo;
 			oldAdminID = ChatAdmins.currentAdmin;
 
-			await ctx.reply(`На ваш вопрос ответит ${currentAdminInfo.admin_name}. Ответ придет в течение 10-20 минут.`);
+			await ctx.reply(`Сіздің сұрағыңызға ${currentAdminInfo.admin_name} жауап береді. Жауап 10-20 минут ішінде келеді.`);
 
 			botMethods.resendToAdmin(ctx);
 
@@ -188,11 +188,11 @@ bot.use(stage.middleware());
 bot.command('start', async(ctx) => {
 	let btnRandomID = botMethods.makeID();
 
-	const questionBtnInfo = await ctx.reply('Правила', { 
+	const questionBtnInfo = await ctx.reply('Ережелер', { 
 		reply_markup: {
 			inline_keyboard: [
 				[
-					{ text: "Задайте свой первый вопрос ↩", callback_data: `start-btn-question-${btnRandomID}` },
+					{ text: "Бірінші сұрағыңызды қойыңыз ↩", callback_data: `start-btn-question-${btnRandomID}` },
 				],
 			]
 		},
