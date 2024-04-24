@@ -42,9 +42,9 @@ bot.command('create_new_user', async (ctx) => {
 });
 bot.command('start', async (ctx) => {
 	// Создание кнопки для авторизации в аккаунт
-	const loginForm = await ctx.reply('Жалғастыру үшін тіркелгіңізге кіріңіз', {
+	const loginForm = await ctx.reply('Жұмысты бастау үшін төмендегі кнопканы басыңыз👇', {
 		reply_markup: {
-				inline_keyboard: [ [{ text: "Тіркелгіге кіру ↩", callback_data: "login-btn" }] ]
+				inline_keyboard: [ [{ text: "Жұмысты бастау ↩", callback_data: "login-btn" }] ]
 		}
 	});
 

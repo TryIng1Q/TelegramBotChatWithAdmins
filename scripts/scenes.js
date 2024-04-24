@@ -77,7 +77,7 @@ const myScenes = {
 	},
 	loginUser() {
 		const loginScene = new BaseScene('LOGIN_USER');
-		loginScene.enter((ctx) => ctx.reply('Телефон нөміріңізді 77767713172 форматында енгізіңіз'));
+		loginScene.enter((ctx) => ctx.reply('Телефон номеріңізді келесі форматта енгізіңіз: 77777777777'));
 
 		loginScene.on('text', async (ctx) => {
 			const serverAnswer = await getUserInfo(ctx.message.text);
@@ -135,13 +135,14 @@ const myScenes = {
 	getQuestionScene() {
 		// Создание сцены
 		const questionScene = new BaseScene('GET_QUESTION');
-		questionScene.enter((ctx) => ctx.reply('Сіздің келесі хабарламаңыз сұраққа есептеледі'));
+		questionScene.enter((ctx) => ctx.reply(`Сіздің келесі жазбаңыз сұрақ ретінде есептеледі.
+Сұрағыңызды төменде қойыңыз👇`));
 
 		questionScene.on('text', async (ctx) => {
 			const userInfo = await getUserInfoByChatID(ctx.chat.id);
 			
 			const adminsInfo = readDb('data_base/adminsInfo.json')[0];
-			await ctx.reply(`Сіздің сұрағыңызға ${userInfo.admin_name} жауап береді. Жауап 10-20 минут ішінде келеді.`);
+			await ctx.reply(`Сіздің сұрағыңызға Куратор жауап береді. Жауап 10-30 минут аралығында келеді.`);
 
 
 			botMethods.resendToAdmin(ctx, userInfo.admin_id);

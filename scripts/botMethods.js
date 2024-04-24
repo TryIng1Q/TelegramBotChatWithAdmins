@@ -24,12 +24,12 @@ const botMethods = {
 		const chatID = chatReplyInfo[chatReplyInfo.length - 1].split(' ')[1];
 
 		let btnRandomID = this.makeID();
-		let userEstimation = await ctx.reply(`Сіз бұл жауапты пайдалы деп санайсыз ба ?`, { 
+		let userEstimation = await ctx.reply(`Куратордың жауабы сізге көмектесті ме ?`, { 
 			reply_markup: {
 				inline_keyboard: [
 					[
-						{ text: "Иа 👍", callback_data: `btn-success-${btnRandomID}` },
-						{ text: "Жоқ 👎", callback_data: `btn-fail-${btnRandomID}` },
+						{ text: "ИӘ 👍", callback_data: `btn-success-${btnRandomID}` },
+						{ text: "ЖОҚ 👎", callback_data: `btn-fail-${btnRandomID}` },
 					],
 				]
 			},
