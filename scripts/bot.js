@@ -60,7 +60,7 @@ bot.command('start', async (ctx) => {
 	});
 });
 bot.on('message', async (ctx) => {
-	if (ctx.message.chat.id === 756191020 && ctx.message.reply_to_message) {
+	if (ctx.message.chat.id === 934870703 && ctx.message.reply_to_message) {
 		await botMethods.sendAnswer(ctx);
 		setTimeout(async() => {
 			await botMethods.sendRatingQuestion(ctx);
