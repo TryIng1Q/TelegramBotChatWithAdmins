@@ -3,7 +3,7 @@ const { Telegraf, Scenes, session } = require('telegraf');
 const { Stage } = Scenes;
 
 // Bot
-global.bot = new Telegraf('7197566941:AAFEi_OATOQ-JfjMkwIGdX1PmWGybbaTmzM');
+global.bot = new Telegraf('7070562905:AAGAp1C5JeDSEzEnOQmXK65kkAqC38N2FyI');
 bot.telegram.setMyCommands([
   {
     command: 'create_new_user',
