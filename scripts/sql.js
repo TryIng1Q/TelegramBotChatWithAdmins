@@ -21,7 +21,7 @@ const dataBaseMethods = {
 			host: 'localhost',
 			user: 'root',
 			password: '',
-			database: 'TelegramBotDataBase'
+			database: 'TelegramBotWithAdmins'
 		});
 	},
 	closeConnect() {

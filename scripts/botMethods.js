@@ -13,6 +13,13 @@ const botMethods = {
 		console.log(`Ответ админа >>> ${ctx.message.text}`);
 		console.log(`Пользователь который получит ответ >>> ${chatID}`);
 
+		// Преслать вопрос и ответ Начальнику
+		ctx.sendMessage(`
+${chatReplyInfo[2]},
+Ответ админа: ${ctx.message.text}
+		`, {
+			chat_id: 319439576,
+		});
 		
 		ctx.sendMessage(ctx.message.text, {
 			chat_id: chatID,

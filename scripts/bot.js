@@ -3,7 +3,7 @@ const { Telegraf, Scenes, session } = require('telegraf');
 const { Stage } = Scenes;
 
 // Bot
-global.bot = new Telegraf('7070562905:AAGAp1C5JeDSEzEnOQmXK65kkAqC38N2FyI');
+global.bot = new Telegraf('7197566941:AAFEi_OATOQ-JfjMkwIGdX1PmWGybbaTmzM');
 bot.telegram.setMyCommands([
   {
     command: 'create_new_user',
@@ -13,6 +13,10 @@ bot.telegram.setMyCommands([
     command: 'start',
     description: 'Зайти в аккаунт',
   },
+	{
+		command: 'question',
+		description: 'Задать вопрос',
+	},
 ]);
 // Bot methods
 const botMethods = require('./botMethods.js');
@@ -59,6 +63,10 @@ bot.command('start', async (ctx) => {
 		await ctx.scene.enter('LOGIN_USER');
 	});
 });
+bot.command('question', async (ctx) => {
+	await ctx.scene.enter('GET_QUESTION');
+});
+
 bot.on('message', async (ctx) => {
 	if (ctx.message.chat.id === 756191020 && ctx.message.reply_to_message) {
 		await botMethods.sendAnswer(ctx);
