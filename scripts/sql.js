@@ -20,7 +20,7 @@ const dataBaseMethods = {
 		mysql.createConnection({
 			host: 'localhost',
 			user: 'root',
-			password: '',
+			password: 'oNA2b@9t5237',
 			database: 'TelegramBotWithAdmins'
 		});
 	},
@@ -110,6 +110,19 @@ const dataBaseMethods = {
 	},
 };
 
+const reconnectDatabase = () => {
+	setInterval(() => {
+		console.log('Повторное соединение с базой данных');
+
+		mysql.createConnection({
+			host: 'localhost',
+			user: 'root',
+			password: 'oNA2b@9t5237',
+			database: 'TelegramBotWithAdmins'
+		});
+	}, 60000000);
+};
+
 
 
 // Export
@@ -120,4 +133,5 @@ module.exports = {
 	getUserInfoByChatID: dataBaseMethods.getUserInfoByChatID,
 	changeAdminFail: dataBaseMethods.changeAdminFail,
 	changeAdmin: dataBaseMethods.changeAdmin,
+	reconnectDatabase: reconnectDatabase,
 };

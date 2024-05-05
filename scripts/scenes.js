@@ -80,17 +80,29 @@ const myScenes = {
 		loginScene.enter((ctx) => ctx.reply('Телефон номеріңізді келесі форматта енгізіңіз: 77777777777'));
 
 		loginScene.on('text', async (ctx) => {
-			const serverAnswer = await getUserInfo(ctx.message.text);
+			if (Number(ctx.message.text)) {
+				if (ctx.message.text.length === 11) {
+					const serverAnswer = await getUserInfo(ctx.message.text);
 
-			if (serverAnswer === undefined) {
-				ctx.reply('Сіз дұрыс емес нөмірді енгізген сияқтысыз');
+					if (serverAnswer === undefined) {
+						ctx.reply('Сіз дұрыс емес нөмірді енгізген сияқтысыз');
+		
+						ctx.scene.leave();
+					} else {
+						ctx.session.currentUser = serverAnswer;
+		
+						await ctx.scene.enter('SET_USER_PASS');
+					};
+				} else {
+					ctx.reply('Ваш номер должен содержать ровно 11 цифр');
+
+					ctx.scene.leave();
+				};
+			} else {
+				ctx.reply('Вы ввели не номер, попробуйте еще раз');
 
 				ctx.scene.leave();
-			} else {
-				ctx.session.currentUser = serverAnswer;
-
-				await ctx.scene.enter('SET_USER_PASS');
-			};
+			}
 		});
 
 		return loginScene;
