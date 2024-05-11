@@ -179,6 +179,7 @@ const SceneCreate = {
           };
   
           writeDb(adminsInfo, './database/admin_info.json');
+          await ctx.scene.leave();
         };
       } else {
         await ctx.reply('Вы ввели не правильный формат телефона');
