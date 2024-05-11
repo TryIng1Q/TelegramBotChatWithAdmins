@@ -9,7 +9,7 @@ const { readDb, writeDb } = require("./dbFunctions");
 // Подключение к базе данных
 const mysql = require('mysql');
 const connection = mysql.createConnection({
-  host: 'localhost',
+	host: 'localhost',
   user: 'root',
   password: 'oNA2b@9t5237',
   database: 'TelegramBotWithAdmins'
@@ -28,15 +28,8 @@ const databaseMethods = {
   createNewUser(user_info) {
     const sql = "INSERT INTO `users_info` (`chat_id`, `user_tel`, `user_admin`, `question_count`) VALUES ?;";
 
+    console.log('Добавлен новый пользователь');
     console.log(user_info);
-
-    // connection.connect((err) => {
-    //   if (err) {
-    //     console.error('Ошибка подключения к базе данных:', err.stack);
-    //     return false;
-    //   }
-    //   console.log('Подключено к базе данных MySQL.');
-    // });
 
 		return connection.query(sql, [[user_info]], function(err, result) {
 			if (err) {
@@ -185,7 +178,7 @@ const SceneCreate = {
             adminsInfo.currentAdmin += 1;
           };
   
-          // writeDb(adminsInfo, './database/admin_info.json');
+          writeDb(adminsInfo, './database/admin_info.json');
         };
       } else {
         await ctx.reply('Вы ввели не правильный формат телефона');
@@ -218,7 +211,7 @@ const SceneCreate = {
             adminsInfo.currentAdmin += 1;
           };
   
-          // writeDb(adminsInfo, './database/admin_info.json');
+          writeDb(adminsInfo, './database/admin_info.json');
         };
       } else {
         await ctx.reply('Вы ввели слишком длинный пароль');
@@ -326,7 +319,7 @@ bot.use(stage.middleware());
 
 // Bot events
 bot.command('start', async(ctx) => {
-  await ctx.reply(`Добро пожаловать в чат-бота! \nИспользуйте меню для навигации`, Markup
+  await ctx.reply(`Добро пожаловать в чат-бота! \nИспользуйте меню для навигацииии`, Markup
     .keyboard([
       ['🟢 Зайти в аккаунт'],
       // ['🔵 Задать вопрос']
@@ -361,7 +354,10 @@ bot.on('text', async(ctx) => {
 		});
 
     botMethods.sendAdminAnswer(ctx, 'text');
-	} else {
+	}
+
+  if (ctx.message.chat.id !== 934870703) {
+    console.log('ТУТ');
     const userAdmin = await databaseMethods.getUserAdmin(ctx.chat.id);
       
     if (userAdmin) {
