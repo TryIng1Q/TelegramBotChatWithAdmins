@@ -134,7 +134,7 @@ const databaseMethods = {
 };
 
 // Bot
-bot = new Telegraf('7197566941:AAFEi_OATOQ-JfjMkwIGdX1PmWGybbaTmzM');
+bot = new Telegraf('7070562905:AAGAp1C5JeDSEzEnOQmXK65kkAqC38N2FyI');
 const botMethods = {
   sendAdminAnswer(ctx, answerType) {
     const userInfo = (ctx.message.reply_to_message.text).split('\n');
